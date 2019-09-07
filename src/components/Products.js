@@ -4,19 +4,22 @@ import {ProductContext} from '../Context/ProductContext'
 // Components
 
 import Product from './Product';
-// eslint-disable-next-line
-const { products, addItem } = useContext(ProductContext);
-const Products = props => {
+//  eslint-disable-next-line
+
+const Products =  () => {
+const{ products , addItem }=useContext(ProductContext)
 	return (
+		<ProductContext.Provider>
 		<div className="products-container">
-			{props.products.map(product => (
+			{products.map(product => (
 				<Product
 					key={product.id}
 					product={product}
-					addItem={props.addItem}
+					addItem={addItem}
 				/>
 			))}
 		</div>
+		</ProductContext.Provider>
 	);
 };
 
